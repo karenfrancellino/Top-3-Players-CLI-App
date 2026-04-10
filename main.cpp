@@ -1,26 +1,35 @@
 #include <iostream>
-using namespace std;
+#include <string>
 
-int main (){
-    struct jugador {
-        string nombre;
-        string equipo;
-    };
-    jugador jugadores[3];
-    cout << "Introduzca su top 3 de jugadores" << "\n";
-    // Bucle for para solicitar lo 3 jugadores favoritos
-    for (int i = 3; i>0; i--) {
-        cout << "Top " << i << "\n";
-        cout << "Nombre " << "\n";
-        getline(cin, jugadores[i-1].nombre);
-        cout << "Equipo " << "\n";
-        getline(cin, jugadores[i - 1].equipo);
+struct Jugador {
+    std::string nombre;
+    std::string equipo;
+};
+
+int main() {
+    Jugador jugadores[3];
+
+    std::cout << "Introduzca su top 3 de jugadores\n";
+
+    for (int i = 2; i >= 0; i--) {
+        std::cout << "Top " << (i + 1) << "\n";
+
+        std::cout << "Nombre: ";
+        std::getline(std::cin, jugadores[i].nombre);
+
+        std::cout << "Equipo: ";
+        std::getline(std::cin, jugadores[i].equipo);
     }
-    //salida por pantalla del top 3 jugadores
-    cout << "Su top 3 jugadores es: " "\n";
-    cout << "1.-" + jugadores[0].nombre + " - " +jugadores[0].equipo << "\n";
-    cout << "2.-" + jugadores[1].nombre + " - " +jugadores[1].equipo << "\n";
-    cout << "3.-" + jugadores[2].nombre + " - " +jugadores[2].equipo << "\n";
-    cin.get();
+
+    std::cout << "\nSu top 3 jugadores es:\n";
+
+    for (int i = 0; i < 3; i++) {
+        std::cout << i + 1 << ".- "
+                  << jugadores[i].nombre
+                  << " - "
+                  << jugadores[i].equipo
+                  << "\n";
+    }
+
     return 0;
 }
